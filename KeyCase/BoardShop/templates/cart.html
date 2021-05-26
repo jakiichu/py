@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="cart">
+  {% comment %} {% if cart.products.count %} {% for cart_product in
+  cart.products.all %}
+  <div class="card-body">
+    <img
+      src="{{ cart_product.product.img.url }}"
+      class="card-img-top"
+      alt="..."
+      style="border: solid 1px white"
+    />
+    <h5 class="card-title">{{ cart_product.product.name }}</h5>
+    <p>{{ cart_product.qty }}</p>
+    <p>{{ cart_product.final_price }} ₽</p>
+  </div>
+
+  {% endfor %} {% else %} соси {% endif %}
+</div>
+
+{% endcomment %}
+
+<div data-bs-spy="scroll" style="padding: 8px; margin: 8px; color: white" class="border-top border-bottom">
+  {% for item in cart.products.all %}
+  <div class="row g-0">
+    <div class="col-md-1 align-self-center">
+      <img
+        style="border: solid 1px white"
+        src="{{item.product.img.url}}"
+        width="100%"
+        class="m-auto"
+      />
+    </div>
+    <div class="card-body col-md-5 pr-0 pl-0">
+      <div class="p-0 d-inline-block">
+        <h3 class="card-title">{{ item.product.name }}</h3>
+      </div>
+    </div>
+    <div
+      style="border: solid 1px white"
+      class="card-body col-md-1 pr-0 pl-0 justify-content-end"
+    >
+      <div class="d-flex align-self-center col-md-3 justify-content-end">
+        <span style="margin-right: 15px;">Колво:{{ item.qty }}</span>
+        <span> {{ item.final_price }}₽</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<p style="color: white;  margin-right: 15px;" class="text-end">{{cart.final_price}} ₽</p>
+{% endblock content %}

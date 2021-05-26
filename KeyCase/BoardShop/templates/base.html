@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title></title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/static.css" />
+  </head>
+
+  <body>
+    <div class="navigation d-flex justify-content-between mb-5">
+      <nav>
+        <a href="/" class="logo"
+          ><img href="#" src="/static/img/logo/logo.png" alt=""
+        /></a>
+        <a class="menu main-item" href="javascript:void(0);" tabindex="1"
+          ><img class="menu" src="/static/img/content/меню.png" alt=""
+        /></a>
+        <div class="sub-menu">
+          <a href="/"
+            ><img class="logo" href="#" src="/static/img/logo/logo2.png" alt=""
+          /></a>
+          <a class="navigationPlate navigationPlate1" href="/products"
+            >Товары</a
+          >
+          <a class="navigationPlate navigationPlate2" href="#2">подпункт 2</a>
+          <a class="navigationPlate navigationPlate3" href="#3">подпункт 3</a>
+        </div>
+      </nav>
+      <nav class="nav2 ">
+        {% if user.is_authenticated %}
+        <p><a href=""> {{ user.username }} </a></p>
+        <p><a href="/logout">Выйти</a></p>
+        {% else %}
+        <p><a href="/login">Авторизация</a></p>
+        <p><a href="/register">Регистрация</a></p>
+        {% endif %}
+        <p><a href="/cart">Корзина</a></p>
+      </nav>
+    </div>
+    
+    {% block content %} {% endblock %}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

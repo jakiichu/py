@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators  buttonFloat divFloat">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+            class="active buttonFloat" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="buttonFloat"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="buttonFloat"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        {% for i in rand %}
+        {% if forloop.first %}
+        <div class="carousel-item active">
+            <img src="{{i.img.url}}" class="d-block w-100 carousel-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="carouselTextH1">{{i.name}}</h1>
+                <p>{{i.description|truncatechars:250}}</p>
+                <a href="{% url 'BoardShop:ProductView' i.id%}"><button type="button"
+                        class="btn btn-dark border border-light carouselButton">подробнее</button></a>
+            </div>
+        </div>
+        {% else %}
+        <div class="carousel-item">
+            <img src="{{i.img.url}}" class="d-block w-100 carousel-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="carouselTextH1">{{i.name}}</h1>
+                <p>{{i.description|truncatechars:250}}</p>
+                <a href="{% url 'BoardShop:ProductView' i.id%}"><button type="button"
+                        class="btn btn-dark border border-light carouselButton">подробнее</button></a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+        <!-- <div class="carousel-item">
+                <img src="static/img/content/corusel.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                        <h1 class="carouselTextH1">{{rand1.name}}</h1>
+                        <p>{{rand1.description|truncatechars:250}}</p>
+                        <a href="/products/{{rand1.id}}"><button type="button"
+                                class="btn btn-dark border border-light carouselButton">подробнее</button></a>
+                    </div>
+            </div>
+            <div class="carousel-item">
+                <img src="static/img/content/corusel.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                        <h1 class="carouselTextH1">{{rand2.name}}</h1>
+                        <p>{{rand2.description|truncatechars:250}}</p>
+                        <a href="/products/{{rand2.id}}"><button type="button"
+                                class="btn btn-dark border border-light carouselButton">подробнее</button></a>
+                    </div>
+            </div> -->
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock content %}

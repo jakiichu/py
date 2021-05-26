@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<div
+  style="
+    position: fixed;
+    background-color: aliceblue;
+    border: solid;
+    margin-left: 50px;
+    margin-top: 120px;
+    width: 836px;
+    height: auto;
+  "
+>
+  <p class="id">{{ item.id }}</p>
+  <img
+    style="width: 832px; height: auto"
+    src="{{ product.img.url }}"
+  />
+  
+</div>
+<div style="position: absolute; left: 920px; top: 150px; width: 800px">
+  <h1>{{product.name}}</h1>
+
+  <form id="add-form" action="{% url 'BoardShop:addToCart' product.id %}" method="POST" style="margin: 0;">
+    {% csrf_token %}
+    <button class="buy" type="submit" style="margin: 10px; padding: 8px; font-size: 24px">
+      {{ product.price }} ₽
+    </button>
+  </form>
+  <p style="color: aliceblue; font-size: 16px">{{product.description|linebreaksbr}}</p>
+</div>
+{% endblock content %}
